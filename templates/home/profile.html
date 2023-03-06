@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %} Profile page {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        
+        <h2 class="display-3 mx-auto text-success" style="font-size: 49px;">Welcome: <span class="text-warning">{{user}}</span></h2>
+
+        {% if messages %}
+         {% for message in messages %}
+
+            <span {% if message.tags %} class="{{message.tags}}" {% endif %}><h2 class="display-3">{{message}}</h2></span>
+         
+         {% endfor %}
+        {% endif %}
+        &nbsp; &nbsp;
+        <button class="btn btn-primary p-3 mt-2"><a href="{% url 'logout' %}" style="text-decoration: none; color: aliceblue;">Logout</a></button><br>&nbsp;&nbsp;
+        <button class="btn btn-primary p-3 mt-2"><a href="{% url 'change_pass' %}" style="text-decoration: none; color: aliceblue;">Change Password</a></button>
+
+        
+    </div>
+    
+    <div class="row">
+        
+        <h2 class="display-3 mx-auto text-success m-3" >All <span class="text-warning">user data :</span></h2>
+
+        <table class="table p-3 m-3">
+            <thead>
+              <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                {% if users != None %}
+                {% for user in users %}
+              <tr>
+                <th scope="row">{{user.id}}</th>
+                <td><a href="{% url 'userdetails' user.id %}">{{user.username}}</a></td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        
+        
+    </div>
+
+    <div class="row">
+        <h2 class="display-3 mx-auto text-success" style="font-size: 29px;">Edit <span class="text-warning"> {{user}}'s Profile:</span></h2>
+
+       
+
+        <form action="" method="POST" class="form-control mt-2 p-4 bg-dark text-info">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {% for er in form.non_field_errors %}
+
+                <p class="text-danger lead mt-2 text-center  font-weight-bold">{{er}}</p>
+                
+                {% endfor %}
+
+            {% endif %}
+
+            {% for field in form %}
+                {{field.label_tag}} {{field}} <span class="errorlist">{{field.errors|striptags}}</span> <br>
+            {% endfor %}
+
+            <input type="submit" value="submit" class="btn btn-primary ">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <!--message row-->
+    <div class="row m-4">
+        <a href="{%  url 'year' 4444 %}"><h3 class="display-3" style="font-size: 30px;"> show year</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'profile'  %}"><h3 class="display-3" style="font-size: 30px;">Profile</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'teacher_reg'  %}"><h3 class="display-3" style="font-size: 30px;"> Teacher Registration</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'login'  %}"><h3 class="display-3" style="font-size: 30px;"> Login</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'set_session'  %}"><h3 class="display-3" style="font-size: 30px;"> Set Session</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'get_session'  %}"><h3 class="display-3" style="font-size: 30px;"> Get Session</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'del_session'  %}"><h3 class="display-3" style="font-size: 30px;"> Del Session</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'testhome'  %}"><h3 class="display-3" style="font-size: 30px;"> TestApp</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'q_objects'  %}"><h3 class="display-3" style="font-size: 30px;"> Q-objects </h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'homeEnroll'  %}"><h3 class="display-3" style="font-size: 30px;">EnrollApp </h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'relhome'  %}"><h3 class="display-3" style="font-size: 30px;">RelationOFDb</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'youtube2' 'this-is-my-post' %}"><h3 class="display-3" style="font-size: 30px;">youtube2</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'pupilsList'  %}"><h3 class="display-3" style="font-size: 30px;">ALL pupils</h3></a>&nbsp; &nbsp;
+
+        {% if messages %}
+
+        {% for message in messages %}
+        
+        
+        <span {% if message.tags %}  class="{{message.tags}} display-3" {% endif %}><h2 class="display-3 ">{{message}}</h2></span>
+        
+        
+         
+        {% endfor %}
+        
+        {% endif %}
+    </div>
+    <div class="row  m-3 p-4">
+        <h2 class="display-3 text-info mx-auto" style="font-size: 38px; font-weight: 400;">Student Registration Form: <span class="text-warning ">Model Form Example</span> </h2>
+
+    </div>
+    <div class="row mx-auto mb-4">
+        
+        <form action="" method="POST" class="form-control bg-dark text-info">
+            {% csrf_token %}
+                {{form.non_field_errors}}
+                {% for field in form %}
+                    <div class="row m-4" style="margin-top: 10px;">
+
+                        {{field.label_tag}} 
+                        {{field}} 
+                        <span class="errorlist">{{field.errors|striptags}}</span>
+
+
+
+                    </div>
+                {% endfor %}
+            
+                <div class="row container  m-1 mr-1 mt-2 mb-4">
+                    <input type="submit" value="submit" style="width: 100%; "  class="btn btn-primary  pt-2 pb-2  mx-auto  ">
+                </div>
+
+            
+        </form>
+
+       
+       
+
+    </div>
+    
+</div>
+
+{% endblock %}

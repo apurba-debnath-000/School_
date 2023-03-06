@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="row" >
+        <h3 class="display-3 mx-auto mt-3" style="font-size: 30px;">Password Reset Form:</h3>
+
+        <form action="" method="POST" class="form-control m-4" novalidate>
+            {% csrf_token %}
+
+            {{form.as_p}}
+            
+            <input type="submit" value="Password Reset" class="btn btn-info">
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

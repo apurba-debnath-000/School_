@@ -1,0 +1,27 @@
+
+
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="row" >
+        <p class="lead text-info" >Log in again</p>
+        
+        
+        
+    </div>
+    <div class="row">
+        <p class="lead">Thanks for spending some quality time with the web site today.</p>
+        <br>
+    </div>
+    <div class="row">
+        <a href="{% url 'login' %}">Log in again</a>
+        
+    </div>
+</div>
+
+
+{% endblock %}

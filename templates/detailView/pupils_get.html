@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+<h1>Lists are here:----</h1>
+
+<div class="container">
+    <div class="row">
+        
+        <h2 class="display-3 mx-auto text-success m-3" >All <span class="text-warning">user data :</span></h2>
+
+        <table class="table p-3 m-3">
+            <thead>
+              <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Roll</th>
+                <th scope="col">Course</th>
+                <th scope="col">Password</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                
+                {% for user in object_list %}
+              <tr>
+                <th scope="row">{{user.id}}</th>
+                
+                
+                <td>{{user.p_name}}</td>
+                <td>{{user.p_email}}</td>
+                <td>{{user.p_roll}}</td>
+                <td>{{user.p_course}}</td>
+                <td>{{user.p_password}}</td>
+              </tr>
+              {% endfor %}
+             
+            </tbody>
+          </table>
+        
+        
+    </div>
+</div>
+
+
+{% endblock %}

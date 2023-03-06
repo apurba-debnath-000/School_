@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h2 class="display-3">Student Data</h2>
+
+        <table class="table p-3 m-3">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Roll</th>
+                <th scope="col">City</th>
+                <th scope="col">Marks</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Passdate</th>
+                <th scope="col">Admdatetime</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                {% if students != None %}
+                {% for student in students %}
+              <tr>
+                <th scope="row">{{student.id}}</th>
+                <td>{{student.name}}</td>
+                <td>{{student.roll}}</td>
+                <td>{{student.city}}</td>
+                <td>{{student.marks}}</td>
+                <td>{{student.grade}}</td>
+                <td>{{student.pass_date}}</td>
+                <td>{{student.adm_dateTime_field}}</td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+    </div>
+
+    <div class="row">
+      <h2 class="text-info display-3 mx-auto" style="font-size: 40px;">Aggregate Values from Aggregate Functions</h2>
+
+      <table class="table p-3 m-3 table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Avg</th>
+            <th scope="col">Sum</th>
+            <th scope="col">Max</th>
+            <th scope="col">Min</th>
+            <th scope="col">Count</th>
+           
+          </tr>
+        </thead>
+       
+        <tbody>
+           
+          <tr>
+            <th scope="row">{{avarage}}</th>
+            <td>{{summation}}</td>
+            <td>{{maximum_mark}}</td>
+            <td>{{minimum_mark}}</td>
+            <td>{{howMuch}}</td>
+            
+           
+          </tr>
+          <tr>
+            <th scope="row">{{avarage.marks__avg}}</th>
+            <td>{{summation.marks__sum}}</td>
+            <td>{{maximum_mark.marks__max}}</td>
+            <td>{{minimum_mark.marks__min}}</td>
+            <td>{{howMuch.marks__count}}</td>
+            
+           
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+</div>
+
+{% endblock %}

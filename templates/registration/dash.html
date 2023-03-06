@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+<h2 class="display-3">Welcome Dashboard!! </h2>
+
+<a href="{% url 'logout' %}"><input type="button" value="Logout" class="btn btn-info"></a>
+<a href="{% url 'changepass' %}"><input type="button" value="Change Password" class="btn btn-info"></a>
+
+
+{% endblock %}

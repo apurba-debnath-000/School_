@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Profile page {% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="row">
+        <h2 class="display-3 mx-auto text-success" style="font-size: 29px;">Edit <span class="text-warning"> {{user}}'s Profile:</span></h2>
+
+       
+
+        <form action="" method="POST" class="form-control mt-2 p-4 bg-dark text-info">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {% for er in form.non_field_errors %}
+
+                <p class="text-danger lead mt-2 text-center  font-weight-bold">{{er}}</p>
+                
+                {% endfor %}
+
+            {% endif %}
+
+            {% for field in form %}
+                {{field.label_tag}} {{field}} <span class="errorlist">{{field.errors|striptags}}</span> <br>
+            {% endfor %}
+
+            <input type="submit" value="submit" class="btn btn-primary ">
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        {% if messages %}
+        {% for message in messages %}
+
+           <span {% if message.tags %} class="{{message.tags}}" {% endif %}><h2 class="display-3">{{message}}</h2></span>
+        
+        {% endfor %}
+       {% endif %}
+        <h2 class="display-3 mt-2 text-info mx-auto" style="font-size: 40px;">Login <span class="text-warning">Form:</span></h2>
+    </div>
+    <div class="row mx-auto p-3">
+
+
+        <form action="" method="POST" class="form-control" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {% for er in form.non_field_errors %}
+
+                <p class="text-danger lead mt-2 text-center  font-weight-bold">{{er}}</p>
+                
+                {% endfor %}
+
+            {% endif %}
+
+
+            {% for field in form %}
+              {{field.label_tag}} {{field}} <span class="errorlist">{{field.errors|striptags}}</span> <br>
+            {% endfor %}
+            
+            <input type="submit" style="width: 100%;" value="Login" class="btn btn-primary mt-2">
+        </form>
+
+        
+    </div>
+    <div class="row">
+        <a href="{%  url 'teacher_reg'  %}"><h3 class="display-3" style="font-size: 30px;"> Teacher Registration</h3></a>&nbsp; &nbsp;
+        <a href="{%  url 'home'  %}"><h3 class="display-3" style="font-size: 30px;">Home</h3></a>&nbsp; &nbsp;
+        
+    </div>
+</div>
+
+{% endblock %}

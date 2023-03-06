@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+<h1 class="display-2">Lists are here:----</h1>
+
+{% for f in object_list %}
+    <p>{{f.p_name}}</p>
+    <p>{{f.p_email}}</p>
+    <p>{{f.p_roll}}</p>
+    <p>{{f.p_course}}</p>
+    <p>{{f.p_password}}</p>
+{% endfor %}
+
+{% endblock %}

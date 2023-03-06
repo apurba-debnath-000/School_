@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+
+
+<div class="container">
+
+    <div class="row">
+        
+        <h2 class="display-3 mx-auto text-success m-3" >All <span class="text-warning">user data :</span></h2>
+        <a href="{% url 'createView' %}"><input type="button" value="Add new" class="pt-2 pb-2 btn btn-info m-4"></a>
+        <table class="table p-3 m-3 table-dark text-light table-bordered table-striped table-hover table-sm">
+            <thead>
+              <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Roll</th>
+                <th scope="col">Course</th>
+                <th scope="col">Password</th>
+                <th scope="col" colspan="2">Action</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                
+                {% for user in students %}
+              <tr>
+                
+                <th scope="row">{{user.id}}</th>
+                <td><a href="{% url 'per_pupil' user.id %}">{{user.p_name}}</a></td>
+                <td>{{user.p_email}}</td>
+                <td>{{user.p_roll}}</td>
+                <td>{{user.p_course}}</td>
+                <td>{{user.p_password}}</td>
+                <td><a href="{% url 'DataUpdateView' user.id %}"><input type="button" value="Edit" class="btn btn-info"></a></td>
+                <td><a href="{% url 'DataDeleteView' user.id %}"><input type="button" value="Delete" class="btn btn-info"></a></td>
+              </tr>
+              {% endfor %}
+             
+            </tbody>
+          </table>
+          
+
+
+        <table class="table p-3 m-3 bg-dark text-light">
+            <thead>
+              <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Roll</th>
+                <th scope="col">Course</th>
+                <th scope="col">Password</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                
+                {% for fresher in freshers %}
+              <tr>
+                <th scope="row">{{fresher.id}}</th>
+                <td>{{fresher.p_name}}</td>
+                <td>{{fresher.p_email}}</td>
+                <td>{{fresher.p_roll}}</td>
+                <td>{{fresher.p_course}}</td>
+                <td>{{fresher.p_password}}</td>
+              </tr>
+              {% endfor %}
+             
+            </tbody>
+          </table>
+        
+        
+    </div>
+</div>
+
+
+{% endblock %}

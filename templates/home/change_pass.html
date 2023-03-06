@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-2">
+        {% if messages %}
+        {% for message in messages %}
+
+           <span {% if message.tags %} class="{{message.tags}}" {% endif %}><h2 class="display-3">{{message}}</h2></span>
+        
+        {% endfor %}
+       {% endif %}
+        <h2 class="display-3 mx-auto text-success">Change<span class="text-warning">Password</span></h2>
+    </div>
+    <div class="row">
+        <form action="" method="POST" class="mt-3 p-4 bg-dark form-control text-info" novalidate>
+            {% csrf_token %}
+            {% if fm.non_field_errors %}
+                {% for er in fm.non_field_errors %}
+                    <p>{{er}}</p>
+                {% endfor %}
+            {% endif %}
+            {% for fi in fm %} 
+                {{fi.label_tag}} {{fi}} <span class="errorlist">{{fi.errors|striptags}}</span> <br>
+            {% endfor %}
+
+            <input type="submit" value="Change Password" class="btn btn-primary mt-3">
+        </form>
+    </div>
+
+    <div class="row">
+        <button class="btn btn-primary p-3 mt-2"><a href="{% url 'logout' %}" style="text-decoration: none; color: aliceblue;">Logout</a></button><br>&nbsp;&nbsp;
+        <button class="btn btn-primary p-3 mt-2"><a href="{% url 'home' %}" style="text-decoration: none; color: aliceblue;">Home</a></button><br>&nbsp;&nbsp;
+        <button class="btn btn-primary p-3 mt-2"><a href="{% url 'profile' %}" style="text-decoration: none; color: aliceblue;">Profile</a></button><br>&nbsp;&nbsp;
+
+    </div>
+</div>
+
+{% endblock %}

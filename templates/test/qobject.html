@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h2 class="display-3" style="font-size: 30px;">Q- objects</h2>
+
+
+    </div>
+
+    <div class="row">
+        <h2 class="display-3">Student Data</h2>
+
+        <table class="table p-3 m-3">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Roll</th>
+                <th scope="col">City</th>
+                <th scope="col">Marks</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Passdate</th>
+                <th scope="col">Admdatetime</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                {% if students != None %}
+                {% for student in students %}
+              <tr>
+                <th scope="row">{{student.id}}</th>
+                <td>{{student.name}}</td>
+                <td>{{student.roll}}</td>
+                <td>{{student.city}}</td>
+                <td>{{student.marks}}</td>
+                <td>{{student.grade}}</td>
+                <td>{{student.pass_date}}</td>
+                <td>{{student.adm_dateTime_field}}</td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock %}
+
+{% block body %}
+
+
+
+<div class="container">
+    <div class="row">
+        
+        <h2 class="display-3 mx-auto text-success m-3" >Single <span class="text-warning">user data :</span></h2>
+
+        <table class="table p-3 m-3 bg-dark text-light">
+            <thead>
+              <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Roll</th>
+                <th scope="col">Course</th>
+                <th scope="col">Password</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                
+                
+              <tr>
+                
+                <th scope="row">{{stu.id}}</th>
+                <td>{{stu.p_name}}</td>
+                <td>{{stu.p_email}}</td>
+                <td>{{stu.p_roll}}</td>
+                <td>{{stu.p_course}}</td>
+                <td>{{stu.p_password}}</td>
+              </tr>
+             
+             
+            </tbody>
+          </table>
+          
+
+
+        
+        
+        
+    </div>
+    <div class="row">
+      <a href="{% url 'pupilsList' %}"><input type="button" value="Show all data" class="btn btn-info pt-2 pb-2 pl-4 pr-4 mt-2 ml-3"></a>
+    </div>
+</div>
+
+
+{% endblock %}

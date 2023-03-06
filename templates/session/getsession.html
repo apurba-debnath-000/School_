@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Get Session {% endblock %}
+
+{% block body %}
+
+<h2 class="display-3">Get Session.........</h2>
+
+<h2 class="display-3">{{name}}</h2>
+
+<h2>Keys are from session </h2>
+
+{% for key in keys %}
+    <h3 class="display-3">{{key}}</h3><br>
+{% endfor %}
+<hr>
+
+{% for item in items %}
+    <h3 class="display-3" style="font-size: 30px;">{{item}}</h3><br>
+{% endfor %}
+
+
+{{request.session.get_session_cookie_age}}
+{{request.session.get_expiry_age}}
+{{request.session.get_expiry_date}}
+{{request.session.get_expire_at_browser_close}}
+
+{% endblock %}
