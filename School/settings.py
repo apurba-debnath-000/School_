@@ -142,3 +142,5 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 SESSION_FILE_PATH = os.path.join(BASE_DIR, 'allsession')
 
 LOGIN_REDIRECT_URL = '/myapp/dashboard/'
+
+CSRF_TRUSTED_ORIGINS =['https://school-production.up.railway.app/',]
